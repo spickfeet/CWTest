@@ -8,15 +8,15 @@ namespace CWTest
 {
     public class Calculator
     {
-        static public double addition(double num1, double num2)
+        static public double Addition(double num1, double num2)
         {
             return num1 + num2;
         }
-        static public double difference(double num1, double num2)
+        static public double Difference(double num1, double num2)
         {
             return num1 - num2;
         }
-        static public double multiplication(double num1, double num2)
+        static public double Multiplication(double num1, double num2)
         {
             return num1 * num2;
         }

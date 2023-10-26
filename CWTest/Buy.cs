@@ -8,17 +8,19 @@ namespace CWTest
 {
     public class Buy : Transaction
     {
+        private List<Product> _productsList;
         private int _buyID;
         private int _discount;
+        public List<Product> ProductsList { get { return _productsList; } set { _productsList = value; } }
         public int BuyID { get { return _buyID; } set { _buyID = value; } }
         public int Discount { get { return _discount; } set { _discount = value; } }
-        public Buy(TransactionMetod transactionMetod, double moneyAmount, string cashierrName, List<Product> productsList, int buyID, int discount) 
-            : base(transactionMetod, moneyAmount, cashierrName, productsList)
+        public Buy(TransactionMethod transactionMetod, double moneyAmount, string cashierrName, List<Product> productsList, int buyID, int discount) 
+            : base(transactionMetod, moneyAmount, cashierrName)
         {
-            TransactionMetod = transactionMetod;
+            ProductsList = productsList;
+            TransactionMethod = transactionMetod;
             MoneyAmount = moneyAmount;
             СashierrName = cashierrName;
-            ProductsList = productsList;
             BuyID = buyID;
             Discount = discount;
         }
@@ -26,23 +28,18 @@ namespace CWTest
         {
             Calculator.DiscountUse(MoneyAmount, Discount);
         }
-        public void RemuveProductsInAssortment(double bank, double moneyAmount, List<Product> productAssortment)
+        public void RemuveProductsInAssortment(List<Product> productInAssortment)
         {
-            foreach(Product productInList in ProductsList) {
-                foreach(Product prductInRange in productAssortment) {
-                    if (productInList == prductInRange)
-                    {
-                        productAssortment.Remove(prductInRange);
-                        continue;
-                    }
-                }
+            foreach (Product productInList in ProductsList)
+            {
+                productInAssortment.Remove(productInList);
+                
             }
         }
 
-        public double addIncome(double income)
+        override public double ChangeMoneyInCashRegister(double moneyInCashRegister)
         {
-            Calculator.addition(income, MoneyAmount);
-            return income;
+            return Calculator.Addition(moneyInCashRegister, MoneyAmount); 
         }
 
     }

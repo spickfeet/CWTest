@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Buy.cs" />
     <Compile Include="Calculator.cs" />
+    <Compile Include="ProductWeight.cs" />
     <Compile Include="Refund.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
